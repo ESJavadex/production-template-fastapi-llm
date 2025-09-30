@@ -17,6 +17,13 @@
 
 </div>
 
+> [!NOTE]
+> **📍 Estás en la rama `starter`** - Esta es la versión inicial del proyecto sin protecciones de seguridad (CORS abierto, sin rate limiting, sin validaciones avanzadas). Es perfecta para aprender y comenzar.
+>
+> **🔐 Para código production-ready** con todas las protecciones de seguridad, consulta la rama [`main`](https://github.com/ESJavadex/production-template-fastapi-llm/tree/main).
+
+---
+
 ## ✨ Sobre este Proyecto
 
 Este proyecto sirve como **plantilla base para desarrollar aplicaciones de IA production-ready**. Aunque el ejemplo implementado es un chatbot de asesoramiento de Ferrari, la arquitectura y patrones pueden adaptarse a cualquier proyecto que requiera integración con LLMs.
