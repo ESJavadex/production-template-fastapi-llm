@@ -17,6 +17,13 @@
 
 </div>
 
+> [!IMPORTANT]
+> **🔐 Estás en la rama `main`** - Esta es la versión production-ready con todas las protecciones de seguridad (validaciones, rate limiting, retry logic, logging estructurado, manejo de errores, etc.).
+>
+> **🚀 ¿Empezando desde cero?** Consulta la rama [`starter`](https://github.com/ESJavadex/production-template-fastapi-llm/tree/starter) para la versión inicial básica, perfecta para aprender paso a paso.
+
+---
+
 ## ✨ Sobre este Proyecto
 
 Este proyecto sirve como **plantilla base para desarrollar aplicaciones de IA production-ready**. Aunque el ejemplo implementado es un chatbot de asesoramiento de Ferrari, la arquitectura y patrones pueden adaptarse a cualquier proyecto que requiera integración con LLMs.
