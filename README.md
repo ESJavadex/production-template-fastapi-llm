@@ -130,25 +130,52 @@ data: [DONE]
 
 ---
 
-## 🎓 Aprende Más
+## 🎓 Aprende IA sin Humo - Únete a La Escuela de IA
 
-Este proyecto es parte del contenido educativo de **La Escuela de IA**.
+<div align="center">
 
-📺 **[Ver el tutorial completo en YouTube](#)** *(próximamente)*
+### **[🚀 ACCESO GRATUITO VITALICIO - Primeros 50 Estudiantes](https://skool.com/la-escuela-de-ia-9955)**
 
-En el tutorial aprenderás:
-- Cómo estructurar aplicaciones de IA para producción
-- Patrones de diseño para integración con LLMs
-- Mejores prácticas de seguridad y manejo de errores
-- Cómo escalar y optimizar tu aplicación
+</div>
 
-Para transformar esta base en un microservicio production-ready completo, consulta `DEMO_1_INSTRUCTIONS.md` donde encontrarás implementaciones de:
+Este proyecto es parte del contenido educativo de **[La Escuela de IA](https://skool.com/la-escuela-de-ia-9955)**, la comunidad donde aprendemos Inteligencia Artificial **sin humo ni promesas vacías**.
+
+### 🎯 ¿Qué encontrarás en La Escuela de IA?
+
+- ✅ **Práctica real, no teoría aburrida** - Proyectos aplicables desde el día 1
+- 📚 **Recursos exclusivos y gratuitos** - Plantillas, guías y herramientas en español
+- 👥 **Comunidad activa de estudiantes** - Comparte dudas, avances y aprende junto a otros
+- 🎬 **Tutoriales completos en YouTube** - Contenido paso a paso sin vendehumo
+- 💎 **Acceso vitalicio GRATUITO** - Solo para los primeros 50 miembros!
+
+### 🔥 ¿Por qué unirte ahora?
+
+> **La calidad de tu aprendizaje depende de la calidad de tu comunidad.**
+
+Aquí no encontrarás promesas de "hacerte millonario en 30 días". Solo encontrarás:
+- IA aplicada a casos reales
+- Ejemplos útiles que puedes implementar hoy
+- El conocimiento necesario para destacar profesionalmente
+
+**📺 [Ver tutorial completo de este proyecto en YouTube](#)** *(próximamente)*
+
+### 📖 Documentación Adicional
+
+Para transformar esta base en un microservicio production-ready completo, consulta `DEMO_1_INSTRUCTIONS.md` donde encontrarás implementaciones detalladas de:
 - Health checks y monitoreo
 - Validación de entrada y límites
 - Retry logic y manejo de errores
 - Logging estructurado
 - Tracking de costes y tokens
 - Rate limiting
+
+<div align="center">
+
+**[🎓 Únete GRATIS a La Escuela de IA](https://skool.com/la-escuela-de-ia-9955)**
+
+*Sin tarjeta de crédito. Acceso inmediato. Comunidad en español.*
+
+</div>
 
 ---
 
