@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA en Producción - Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 IA en Producción</h1>
+            <p class="subtitle">Demo V1: SIN guardrails (va a fallar 💥)</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <label for="prompt">Escribe tu prompt:</label>
+                <textarea
+                    id="prompt"
+                    placeholder="Ej: Escribe una historia corta sobre un unicornio..."
+                ></textarea>
+                <div class="char-counter">
+                    <span id="charCount">0</span> caracteres (sin límite 😈)
+                </div>
+                <button id="generateBtn" onclick="generate()">
+                    Generar
+                </button>
+            </div>
+
+            <div class="response-section" id="responseSection" style="display: none;">
+                <h3>Respuesta:</h3>
+                <div class="response-content" id="responseContent"></div>
+                <div class="metadata" id="metadata"></div>
+            </div>
+
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Generando respuesta...</p>
+            </div>
+
+            <div class="error" id="error" style="display: none;"></div>
+        </main>
+
+        <footer>
+            <p>⚠️ Sin límites • Sin logs • Sin reintentos • Sin protección</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
