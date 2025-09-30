@@ -23,8 +23,8 @@ app.add_middleware(
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
-class PromptRequest(BaseModel):
-    prompt: str
+class ChatRequest(BaseModel):
+    message: str
 
 
 @app.get("/")
@@ -32,11 +32,15 @@ async def read_root():
     return FileResponse("static/index.html")
 
 
-@app.post("/generate")
-async def generate(request: PromptRequest):
-    # No limits, no error handling, no timeouts - let it fail!
+@app.post("/chat")
+async def chat(request: ChatRequest):
+    system_prompt = "Eres un AI Chatbot encargado de ayudar al usuario y asesorar para comprar un Ferrari"
+
     response = client.chat.completions.create(
         model="gpt-4o-mini",
-        messages=[{"role": "user", "content": request.prompt}]
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": request.message}
+        ]
     )
-    return {"output": response.choices[0].message.content}
+    return {"response": response.choices[0].message.content}

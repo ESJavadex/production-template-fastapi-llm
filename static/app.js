@@ -1,83 +1,68 @@
-const promptTextarea = document.getElementById('prompt');
-const charCount = document.getElementById('charCount');
-const generateBtn = document.getElementById('generateBtn');
-const loading = document.getElementById('loading');
-const responseSection = document.getElementById('responseSection');
-const responseContent = document.getElementById('responseContent');
-const metadata = document.getElementById('metadata');
-const errorDiv = document.getElementById('error');
+const chatBox = document.getElementById('chatBox');
+const userInput = document.getElementById('userInput');
+const sendBtn = document.getElementById('sendBtn');
 
-// Character counter
-promptTextarea.addEventListener('input', () => {
-    charCount.textContent = promptTextarea.value.length;
-});
+async function sendMessage() {
+    const message = userInput.value.trim();
 
-async function generate() {
-    const prompt = promptTextarea.value.trim();
+    if (!message) return;
 
-    if (!prompt) {
-        showError('Por favor, escribe un prompt');
-        return;
-    }
+    // Add user message to chat
+    addMessage(message, 'user');
 
-    // Hide previous results and errors
-    responseSection.style.display = 'none';
-    errorDiv.style.display = 'none';
+    // Clear input
+    userInput.value = '';
 
-    // Show loading
-    loading.style.display = 'block';
-    generateBtn.disabled = true;
-
-    const startTime = Date.now();
+    // Disable button while waiting
+    sendBtn.disabled = true;
 
     try {
-        // No timeout, no abort controller - let it hang!
-        const response = await fetch(`http://localhost:8000/generate`, {
+        const response = await fetch('http://localhost:8000/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ prompt: prompt })
+            body: JSON.stringify({ message: message })
         });
 
-        const latency = Date.now() - startTime;
-
         if (!response.ok) {
-            throw new Error(`Error ${response.status}: ${response.statusText}`);
+            throw new Error('Error en la respuesta del servidor');
         }
 
         const data = await response.json();
 
-        // Show response
-        responseContent.textContent = data.output;
-        metadata.innerHTML = `
-            <strong>⏱️ Latencia:</strong> ${latency}ms<br>
-            <strong>📊 Tokens estimados:</strong> ~${Math.ceil(data.output.length / 4)}<br>
-            <strong>💰 Coste estimado:</strong> $${((prompt.length + data.output.length) / 4 * 0.00015 / 1000).toFixed(6)}<br>
-            <strong>⚠️ Sin logs, sin límites, sin control</strong>
-        `;
-
-        responseSection.style.display = 'block';
+        // Add bot response to chat
+        addMessage(data.response, 'bot');
 
     } catch (error) {
-        showError(`💥 FALLÓ (como esperábamos): ${error.message}`);
+        addMessage('Error: No se pudo obtener respuesta', 'bot');
     } finally {
-        loading.style.display = 'none';
-        generateBtn.disabled = false;
+        sendBtn.disabled = false;
+        userInput.focus();
     }
 }
 
-function showError(message) {
-    errorDiv.textContent = message;
-    errorDiv.style.display = 'block';
-    setTimeout(() => {
-        errorDiv.style.display = 'none';
-    }, 5000);
+function addMessage(text, type) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${type}-message`;
+
+    const label = type === 'user' ? 'Tú' : 'Bot';
+
+    // Parse markdown for bot messages
+    if (type === 'bot') {
+        const parsedContent = marked.parse(text);
+        messageDiv.innerHTML = `<strong>${label}:</strong><div class="markdown-content">${parsedContent}</div>`;
+    } else {
+        messageDiv.innerHTML = `<strong>${label}:</strong> ${text}`;
+    }
+
+    chatBox.appendChild(messageDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Allow Enter + Ctrl/Cmd to submit
-promptTextarea.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
-        generate();
+// Allow Enter to submit
+userInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        sendMessage();
     }
 });
